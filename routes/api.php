@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AutorController;
 //Puxar o use de todos os Controllers
 //Se não funcionar somente com o use dos Controllers, colocar também as Models
 
@@ -17,7 +18,7 @@ route::controller(AutorController::class)->group(function (){
     //Padrões
     Route::get('autor', 'get');
     Route::post('autor', 'store');
-    Route::patch('autor', 'update');
+    Route::patch('autor/{id}', 'update');
     Route::get('autor/{id}', 'details');
     Route::delete('autor/{id}', 'delete');
     //Especificos se houver
@@ -27,7 +28,7 @@ route::controller(GeneroController::class)->group(function (){
     //Padrões
     Route::get('genero', 'get');
     Route::post('genero', 'store');
-    Route::patch('genero', 'update');
+    Route::patch('genero/{id}', 'update');
     Route::get('genero/{id}', 'details');
     Route::delete('genero/{id}', 'delete');
     //Especificos se houver
@@ -37,7 +38,7 @@ route::controller(LivroController::class)->group(function (){
     //Padrões
     Route::get('livro', 'get');
     Route::post('livro', 'store');
-    Route::patch('livro', 'update');
+    Route::patch('livro/{id}', 'update');
     Route::get('livro/{id}', 'details');
     Route::delete('livro/{id}', 'delete');
     //Especificos se houver
@@ -47,7 +48,7 @@ route::controller(ReviewController::class)->group(function (){
     //Padrões
     Route::get('review', 'get');
     Route::post('review', 'store');
-    Route::patch('review', 'update');
+    Route::patch('review/{id}', 'update');
     Route::get('review/{id}', 'details');
     Route::delete('review/{id}', 'delete');
     //Especificos se houver
@@ -57,7 +58,7 @@ route::controller(UsuarioController::class)->group(function (){
     //Padrões
     Route::get('usuario', 'get');
     Route::post('usuario', 'store');
-    Route::patch('usuario', 'update');
+    Route::patch('usuario/{id}', 'update');
     Route::get('usuario/{id}', 'details');
     Route::delete('usuario/{id}', 'delete');
     //Especificos se houver

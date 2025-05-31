@@ -10,5 +10,29 @@ class LivroService{
         $this->livroRepository=$livroRepository;
     }
 
-    // Adicionar as condições
+    public function get(){
+        return $this->livroRepository->get();
+    }
+
+    public function details(int $id){
+        return $this->livroRepository->details($id);
+    }
+
+    public function store(array $data){
+        return $this->livroRepository->store($data);
+    }
+
+    public function update(int $id, array $data){
+        return $this->livroRepository->update($id, $data);
+    }
+
+    public function delete(int $id){
+        return $this->livroRepository->delete($id);
+    }
+
+    public function livroAll()
+    {
+        return $this->livroRepository->livroAll();
+    }
+
 }

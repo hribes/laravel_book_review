@@ -27,4 +27,11 @@ class AutorRepository{
         $autor->delete();
         return $autor;
     }
+
+    public function AuthorsWithBooks()
+    {
+        return Autor::with('livros')->get();
+    }
 }
+
+//AuthorsWithBooks

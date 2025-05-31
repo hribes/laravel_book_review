@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class AutorResource extends JsonResource
+class LivroResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,11 +16,12 @@ class AutorResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'nome' => $this->nome,
-            'data_nascimento' => $this->data_nascimento,
-            'biografia' => $this->biografia,
-            // Inclui os livros do autor, se estiverem carregados (eager loaded)
-            'livros' => LivroResource::collection($this->whenLoaded('livros'))
+            'titulo' => $this->titulo,
+            'sinopse' => $this->sinopse,
+
+            'genero' => new GeneroResource($this->whenLoaded('genero')),
+            'autor' => new AutorResource($this->whenLoaded('autor')),
+            'reviews' => ReviewResource::collection($this->whenLoaded('reviews')),
         ];
     }
 }

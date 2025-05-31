@@ -28,4 +28,9 @@ class AutorService{
     public function delete(int $id){
         return $this->autorRepository->delete($id);
     }
+
+    public function AuthorsWithBooks()
+    {
+        return $this->autorRepository->AuthorsWithBooks();
+    }
 }

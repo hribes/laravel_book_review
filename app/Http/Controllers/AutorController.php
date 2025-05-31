@@ -53,4 +53,21 @@ class AutorController extends Controller
         }
         return new AutorResource($autor);
     }
+
+    public function findBookWithAuthor($id)
+    {
+        try {
+            $autor = $this->autorService->details($id);
+            $livros = $autor->livros; 
+            return LivroResource::collection($livros);
+        } catch (ModelNotFoundException $e) {
+            return response()->json(['error' => 'Autor não encontrado'], 404);
+        }
+    }
+
+    public function AuthorsWithBooks()
+    {
+        $autores = $this->autorService->AuthorsWithBooks();
+        return AutorResource::collection($autores);
+    }
 }

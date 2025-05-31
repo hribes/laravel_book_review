@@ -2,7 +2,6 @@
 
 namespace App\Services;
 use App\Repositories\AutorRepository;
-use App\Services\AutorService;
 
 class AutorService{
     private AutorRepository $autorRepository;
@@ -10,5 +9,23 @@ class AutorService{
         $this->autorRepository=$autorRepository;
     }
 
-    // Adicionar as condições
+    public function get(){
+        return $this->autorRepository->get();
+    }
+
+    public function details(int $id){
+        return $this->autorRepository->details($id);
+    }
+
+    public function store(array $data){
+        return $this->autorRepository->store($data);
+    }
+
+    public function update(int $id, array $data){
+        return $this->autorRepository->update($id, $data);
+    }
+
+    public function delete(int $id){
+        return $this->autorRepository->delete($id);
+    }
 }

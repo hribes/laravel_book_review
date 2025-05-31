@@ -26,7 +26,14 @@ class UsuarioService{
         return $this->usuarioRepository->update($id, $data);
     }
 
-    public function delete(int $id){
+    public function delete(int $id)
+    {
+        $usuario = $this->details($id);
+        // Deleta todas as reviews do usuário
+        foreach ($usuario->reviews as $review) {
+            $this->reviewService->delete($review->id);
+        }
         return $this->usuarioRepository->delete($id);
     }
+
 }

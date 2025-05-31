@@ -26,7 +26,13 @@ class LivroService{
         return $this->livroRepository->update($id, $data);
     }
 
-    public function delete(int $id){
+    public function delete(int $id)
+    {
+        $livro = $this->details($id);
+        // Deleta todas as reviews do livro
+        foreach ($livro->reviews as $review) {
+            $this->reviewService->delete($review->id);
+        }
         return $this->livroRepository->delete($id);
     }
 

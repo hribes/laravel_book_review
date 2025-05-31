@@ -26,9 +26,17 @@ class GeneroService{
         return $this->generoRepository->update($id, $data);
     }
 
-    public function delete(int $id){
+    public function delete(int $id)
+    {
+        $genero = $this->details($id);
+        // Desvincula todos os livros do gênero
+        foreach ($genero->livros as $livro) {
+            $livro->genero_id = null;
+            $livro->save();
+        }
         return $this->generoRepository->delete($id);
     }
+
 
     public function generoWithBooks()
     {

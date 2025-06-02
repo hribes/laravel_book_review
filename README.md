@@ -11,7 +11,7 @@ Construção uma API em Laravel seguindo todas as boas práticas levantadas até
 
 A API deve permitir gerenciar um sistema de review de livros seguindo o modelo de diagrama ER a seguir.
 
-<img src="https://cdn.rawgit.com/hribes/laravel_book_review/imagem/conteudo_api.png" alt="Conteúdo da API">
+<img src="https://raw.githubusercontent.com/hribes/laravel_book_review/refs/heads/main/imagem/conteudo_api.png" alt="Conteúdo da API">
 
 
 ## Rotas desenvolvidas

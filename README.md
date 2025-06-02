@@ -1,13 +1,13 @@
 # Faculdade - Criação de API
 Construção uma API em Laravel seguindo todas as boas práticas levantadas até o momento em aulas, sendo elas:
- ○ Migrations
- ○ Models
- ○ Rotas Agrupadas
- ○ Controllers
- ○ Services
- ○ Repositórios
- ○ Requests
- ○ Resources
+ - Migrations
+ - Models
+ - Rotas Agrupadas
+ - Controllers
+ - Services
+ - Repositórios
+ - Requests
+ - Resources
 
 A API deve permitir gerenciar um sistema de review de livros seguindo o modelo de diagrama ER a seguir.
 

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('titulo');
             $table->text('sinopse')->nullable();
-            $table->unsignedBigInteger('genero_id');
+            $table->unsignedBigInteger('genero_id')->nullable();
             $table->unsignedBigInteger('autor_id');
             $table->timestamps();
 

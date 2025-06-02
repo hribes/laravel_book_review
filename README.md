@@ -1,3 +1,59 @@
+# Faculdade - Criação de API
+Construção uma API em Laravel seguindo todas as boas práticas levantadas até o momento em aulas, sendo elas:
+ ○ Migrations
+ ○ Models
+ ○ Rotas Agrupadas
+ ○ Controllers
+ ○ Services
+ ○ Repositórios
+ ○ Requests
+ ○ Resources
+
+A API deve permitir gerenciar um sistema de review de livros seguindo o modelo de diagrama ER a seguir.
+
+<img src="https://cdn.rawgit.com/hribes/laravel_book_review/imagem/conteudo_api.png" alt="Conteúdo da API">
+
+
+## Rotas desenvolvidas
+### Rotas básicas para todos os Modelos:
+ - Criar
+ - Listar
+ - Buscar por ID
+ - Atualizar
+ - Deletar
+
+### Rotas adicionais:
+
+- **Livros**
+
+    - Listar reviews de um livro
+    - Listar livros com seus reviews, autor e gênero
+- **Autor**
+
+    - Listar todos os livros de um autor
+    - Listar autores com seus livros
+- **Usuário**
+    - Listar review de um usuário
+- **Gênero**
+    - Listar todos os livros de um gênero
+    - Listar todos os gêneros com seus livros
+
+## Comportamentos adicionais:
+1. Uma review deve conter uma nota de 0 a 5
+2. Quando um livro for apagado, todas as suas reviews devem ser apagadas também
+3. Quando um usuário for apagado, todas as suas reviews devem ser apagadas
+4. Quando um Gênero for apagado, os livros relacionados devem ser desvinculados
+5. Quando um autor for apagado, os livros relacionados devem ser apagados
+
+
+
+## Collection do Postman - [LINK](https://github.com/hribes/laravel_book_review/blob/main/book-review.postman_collection.json)
+
+
+
+
+---
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">

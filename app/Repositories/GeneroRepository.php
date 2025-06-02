@@ -2,6 +2,8 @@
 
 namespace App\Repositories;
 use App\Models\Genero;
+use App\Models\Livro;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class GeneroRepository{
     public function get() {
@@ -28,9 +30,16 @@ class GeneroRepository{
         return $genero;
     }
 
-    public function generoWithBooks()
+    
+
+    public function detailsWithBooks(int $id) {
+        return Genero::with('livro')->findOrFail($id);
+    } //Usado no Delete
+    
+    public function gensWithBooks()
     {
-        return Genero::with('livros')->get();
+        return Genero::with('livro')->get();
     }
 
+    
 }

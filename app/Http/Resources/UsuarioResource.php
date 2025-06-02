@@ -18,10 +18,8 @@ class UsuarioResource extends JsonResource
             'id' => $this->id,
             'nome' => $this->nome,
             'email' => $this->email,
-            // Sem a senha por segurança das informações
-
-            // Inclui as reviews do usuário, se carregadas
-            'reviews' => ReviewResource::collection($this->whenLoaded('reviews')),
+            
+            'reviews' => ReviewResource::collection($this->whenLoaded('review')),
         ];
     }
 }

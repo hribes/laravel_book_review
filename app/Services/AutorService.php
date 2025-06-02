@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Services;
+use App\Models\Autor;
+use App\Models\Livro;
 use App\Repositories\AutorRepository;
 
 class AutorService{
@@ -25,20 +27,19 @@ class AutorService{
         return $this->autorRepository->update($id, $data);
     }
 
-    public function delete(int $id)
-    {
+    public function delete(int $id){
         $autor = $this->details($id);
-        // Deleta todos os livros do autor usando o LivroService
-        foreach ($autor->livros as $livro) {
-            $this->livroService->delete($livro->id);
+        $livros = $autor->livro;
+        foreach($livros as $livro){
+            $this->livroService->delete($livro->id); 
         }
         return $this->autorRepository->delete($id);
     }
 
 
 
-    public function AuthorsWithBooks()
+    public function authorsWithBooks() 
     {
-        return $this->autorRepository->AuthorsWithBooks();
+        return $this->autorRepository->authorsWithBooks(); 
     }
 }

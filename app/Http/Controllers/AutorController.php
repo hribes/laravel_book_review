@@ -8,6 +8,8 @@ use App\Http\Requests\AutorUpdateRequest;
 use App\Http\Resources\AutorResource;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
+use App\Http\Resources\LivroResource;
+
 class AutorController extends Controller
 {
     private AutorService $autorService;
@@ -54,20 +56,22 @@ class AutorController extends Controller
         return new AutorResource($autor);
     }
 
-    public function findBookWithAuthor($id)
+
+
+    public function findBookWithAuthor($id) // Encontrar os livros de um ator
     {
         try {
             $autor = $this->autorService->details($id);
-            $livros = $autor->livros; 
+            $livros = $autor->livro;
             return LivroResource::collection($livros);
         } catch (ModelNotFoundException $e) {
             return response()->json(['error' => 'Autor não encontrado'], 404);
         }
     }
 
-    public function AuthorsWithBooks()
+    public function AuthorsWithBooks() // Listar autores com seus livros
     {
-        $autores = $this->autorService->AuthorsWithBooks();
+        $autores = $this->autorService->authorsWithBooks();
         return AutorResource::collection($autores);
     }
 }

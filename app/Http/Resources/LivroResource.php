@@ -21,7 +21,7 @@ class LivroResource extends JsonResource
 
             'genero' => new GeneroResource($this->whenLoaded('genero')),
             'autor' => new AutorResource($this->whenLoaded('autor')),
-            'reviews' => ReviewResource::collection($this->whenLoaded('reviews')),
+            'reviews' => ReviewResource::collection($this->whenLoaded('review')),
         ];
     }
 }

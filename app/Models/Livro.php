@@ -1,13 +1,15 @@
 <?php
 
 namespace App\Models;
+use App\Models\Review;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Livro extends Model
 {
     protected $table = 'livros';
-    protected $fillable = ['titulo', 'sinopse'];
+    protected $fillable = ['titulo', 'sinopse', 'genero_id', 'autor_id'];
+
 
     public function genero(){
         return $this->belongsTo(

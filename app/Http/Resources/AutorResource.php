@@ -19,8 +19,8 @@ class AutorResource extends JsonResource
             'nome' => $this->nome,
             'data_nascimento' => $this->data_nascimento,
             'biografia' => $this->biografia,
-            // Inclui os livros do autor, se estiverem carregados (eager loaded)
-            'livros' => LivroResource::collection($this->whenLoaded('livros'))
+            
+            'livros' => LivroResource::collection($this->whenLoaded('livro')) // Inclui os livros do autor quando carregado
         ];
     }
 }

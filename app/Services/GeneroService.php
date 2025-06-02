@@ -1,13 +1,20 @@
 <?php
 
 namespace App\Services;
+use App\Models\Genero;
+use App\Models\Livro;
 use App\Repositories\GeneroRepository;
 use App\Services\GeneroService;
+use App\Repositories\LivroRepository;
 
-class GeneroService{
+
+class GeneroService {
     private GeneroRepository $generoRepository;
-    public function __construct(GeneroRepository $generoRepository){
-        $this->generoRepository=$generoRepository;
+    private LivroRepository $livroRepository;
+
+    public function __construct(GeneroRepository $generoRepository, LivroRepository $livroRepository) {
+        $this->generoRepository = $generoRepository;
+        $this->livroRepository = $livroRepository;
     }
 
     public function get(){
@@ -26,20 +33,18 @@ class GeneroService{
         return $this->generoRepository->update($id, $data);
     }
 
-    public function delete(int $id)
-    {
-        $genero = $this->details($id);
-        // Desvincula todos os livros do gênero
-        foreach ($genero->livros as $livro) {
-            $livro->genero_id = null;
-            $livro->save();
+    public function delete(int $id){
+        $usuario = $this->generoRepository->detailsWithBooks($id);
+        $livros = $usuario->livro;
+
+        foreach($livros as $livro){
+            $this->livroRepository->desvincular($livro->id);
         }
         return $this->generoRepository->delete($id);
     }
 
-
-    public function generoWithBooks()
+    public function gensWithBooks() 
     {
-        return $this->generoRepository->generoWithBooks();
+        return $this->generoRepository->gensWithBooks(); 
     }
 }

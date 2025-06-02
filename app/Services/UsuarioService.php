@@ -1,13 +1,17 @@
 <?php
 
 namespace App\Services;
+use App\Models\Usuario;
+use App\Models\Review;
 use App\Repositories\UsuarioRepository;
-use App\Services\UsuarioService;
+use App\Services\ReviewService;
 
 class UsuarioService{
     private UsuarioRepository $usuarioRepository;
-    public function __construct(UsuarioRepository $usuarioRepository){
+    private ReviewService $reviewService;
+    public function __construct(UsuarioRepository $usuarioRepository, ReviewService $reviewService){
         $this->usuarioRepository=$usuarioRepository;
+        $this->reviewService = $reviewService;
     }
 
     public function get(){
@@ -26,14 +30,18 @@ class UsuarioService{
         return $this->usuarioRepository->update($id, $data);
     }
 
-    public function delete(int $id)
-    {
-        $usuario = $this->details($id);
-        // Deleta todas as reviews do usuário
-        foreach ($usuario->reviews as $review) {
+    public function delete(int $id){
+        $usuario = $this->usuarioRepository->detailsWithReviews($id);
+        $reviews = $usuario->review; 
+
+        foreach($reviews as $review){
             $this->reviewService->delete($review->id);
         }
         return $this->usuarioRepository->delete($id);
+    }
+
+    public function userWithReview(int $id){
+        return $this->usuarioRepository->detailsWithReviews($id);
     }
 
 }

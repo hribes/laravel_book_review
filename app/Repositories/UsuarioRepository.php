@@ -27,4 +27,9 @@ class UsuarioRepository{
         $usuario->delete();
         return $usuario;
     }
+
+    public function detailsWithReviews(int $id) {
+        return Usuario::with('review')->findOrFail($id);
+    }
+
 }

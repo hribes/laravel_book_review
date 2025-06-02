@@ -6,6 +6,7 @@ use App\Services\GeneroService;
 use App\Http\Requests\GeneroStoreRequest;
 use App\Http\Requests\GeneroUpdateRequest;
 use App\Http\Resources\GeneroResource;
+use App\Http\Resources\LivroResource;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class GeneroController extends Controller
@@ -59,20 +60,24 @@ class GeneroController extends Controller
         return new GeneroResource($genero);
     }
 
-    public function findBookWithGenero($id)
+
+    public function findBooksWithGen($id) // Encontrar os livros de um ator
     {
         try {
             $genero = $this->generoService->details($id);
-            $livros = $genero->livros; 
+            $livros = $genero->livro;
             return LivroResource::collection($livros);
         } catch (ModelNotFoundException $e) {
-            return response()->json(['error' => 'Gênero não encontrado'], 404);
+            return response()->json(['error' => 'Genero não encontrado'], 404);
         }
     }
 
-    public function generosComLivros()
+
+    public function gensWithBooks() // Listar autores com seus livros
     {
-        $generos = $this->generoService->generoWithBook();
+        $generos = $this->generoService->gensWithBooks();
         return GeneroResource::collection($generos);
     }
+
+    
 }

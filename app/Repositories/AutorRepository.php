@@ -30,8 +30,6 @@ class AutorRepository{
 
     public function AuthorsWithBooks()
     {
-        return Autor::with('livros')->get();
+        return Autor::with('livro')->get();
     }
 }
-
-//AuthorsWithBooks

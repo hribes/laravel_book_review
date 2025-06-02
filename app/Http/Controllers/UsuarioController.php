@@ -6,6 +6,7 @@ use App\Services\UsuarioService;
 use App\Http\Requests\UsuarioStoreRequest;
 use App\Http\Requests\UsuarioUpdateRequest;
 use App\Http\Resources\UsuarioResource;
+use App\Http\Resources\ReviewResource;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class UsuarioController extends Controller
@@ -62,8 +63,8 @@ class UsuarioController extends Controller
     public function userWithReview($id)
     {
         try {
-            $usuario = $this->usuarioService->details($id);
-            $reviews = $usuario->reviews;
+            $usuario = $this->usuarioService->userWithReview($id);
+            $reviews = $usuario->review;
             return ReviewResource::collection($reviews);
         } catch (ModelNotFoundException $e) {
             return response()->json(['error' => 'Usuário não encontrado'], 404);

@@ -17,8 +17,8 @@ class GeneroResource extends JsonResource
         return [
             'id' => $this->id,
             'nome' => $this->nome,
-            // Inclui os livros do gênero, se estiverem carregados
-            'livros' => LivroResource::collection($this->whenLoaded('livros')),
+            
+            'livros' => LivroResource::collection($this->whenLoaded('livro')),
         ];
     }
 }

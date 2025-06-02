@@ -46,7 +46,7 @@ class ReviewController extends Controller
         } catch (ModelNotFoundException $e) {
             return response()->json(['error' => 'Review não encontrado'], 404);
         }
-        return new ReviewResource($review);
+        return new ReviewResource($reviews);
     }
 
     public function delete(int $id)

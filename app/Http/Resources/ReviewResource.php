@@ -18,9 +18,8 @@ class ReviewResource extends JsonResource
             'id' => $this->id,
             'nota' => $this->nota,
             'texto' => $this->texto,
-            // Inclui o livro, se carregado
+ 
             'livro' => new LivroResource($this->whenLoaded('livro')),
-            // Inclui o usuário, se carregado
             'usuario' => new UsuarioResource($this->whenLoaded('usuario')),
         ];
     }

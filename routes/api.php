@@ -22,36 +22,39 @@ route::controller(AutorController::class)->group(function (){
     //Padrões
     Route::get('autor', 'get');
     Route::post('autor', 'store');
+    Route::get('autor/livros', 'AuthorsWithBooks');
     Route::patch('autor/{id}', 'update');
     Route::get('autor/{id}', 'details');
     Route::delete('autor/{id}', 'delete');
     //Especificos se houver
     Route::get('autor/livro/{id}', 'findBookWithAuthor');
-    Route::get('autor/livro', 'AuthorsWithBooks');
+    
 });
 
 route::controller(GeneroController::class)->group(function (){
     //Padrões
     Route::get('genero', 'get');
     Route::post('genero', 'store');
+    Route::get('genero/livro', 'gensWithBooks');
     Route::patch('genero/{id}', 'update');
     Route::get('genero/{id}', 'details');
     Route::delete('genero/{id}', 'delete');
     //Especificos se houver
-    Route::get('genero/livro/{id}', 'findBookWithGenero');
-    Route::get('genero/{id}', 'generoWithBook');
+    Route::get('genero/livro/{id}', 'findBooksWithGen');
+    
 });
 
 route::controller(LivroController::class)->group(function (){
     //Padrões
     Route::get('livro', 'get');
     Route::post('livro', 'store');
+    Route::get('livro/allInfo', 'livroAll');
     Route::patch('livro/{id}', 'update');
     Route::get('livro/{id}', 'details');
     Route::delete('livro/{id}', 'delete');
     //Especificos se houver
     Route::get('livro/review/{id}', 'livroWithReview');
-    Route::get('livro/allInfo', 'livroAll');
+    
 });
 
 route::controller(ReviewController::class)->group(function (){

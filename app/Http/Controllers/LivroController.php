@@ -62,8 +62,8 @@ class LivroController extends Controller
     public function livroWithReview($id)
     {
         try {
-            $livro = $this->livroService->details($id);
-            $reviews = $livro->review;
+            $livro = $this->livroService->details($id); // Busca o livro
+            $reviews = $livro->review; // Pega as reviews do livro
             return ReviewResource::collection($reviews); 
         } catch (ModelNotFoundException $e) {
             return response()->json(['error' => 'Livro não encontrado'], 404);

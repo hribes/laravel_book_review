@@ -4,18 +4,18 @@ namespace App\Services;
 use App\Repositories\LivroRepository;
 use App\Models\Usuario;
 use App\Models\Review;
-use App\Services\ReviewService; 
+use App\Services\ReviewRepository; 
 
 class LivroService{
     private LivroRepository $livroRepository;
-    private ReviewService $reviewService;
+    private ReviewRepository $reviewRepository;
     
     public function __construct(
         LivroRepository $livroRepository,
-        ReviewService $reviewService 
+        ReviewRepository $reviewRepository 
     ){
         $this->livroRepository = $livroRepository;
-        $this->reviewService = $reviewService; 
+        $this->reviewRepository = $reviewRepository; 
     }
 
     public function get(){
@@ -39,7 +39,7 @@ class LivroService{
         $reviews = $livro->review; 
 
         foreach($reviews as $review){
-            $this->reviewService->delete($review->id);
+            $this->reviewRepository->delete($review->id);
         }
         return $this->livroRepository->delete($id);
     }

@@ -47,7 +47,7 @@ class AutorController extends Controller
         return new AutorResource($autor);
     }
 
-    public function delete(int $id){
+    public function delete(int $id){ 
         try{
             $autor = $this->autorService->delete($id);
         }catch(ModelNotFoundException $e){
@@ -61,8 +61,8 @@ class AutorController extends Controller
     public function findBookWithAuthor($id) // Encontrar os livros de um ator
     {
         try {
-            $autor = $this->autorService->details($id);
-            $livros = $autor->livro;
+            $autor = $this->autorService->details($id); // Acha o autor
+            $livros = $autor->livro; //Pega os livros relacionados ao autor
             return LivroResource::collection($livros);
         } catch (ModelNotFoundException $e) {
             return response()->json(['error' => 'Autor não encontrado'], 404);

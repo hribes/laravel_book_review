@@ -4,11 +4,14 @@ namespace App\Services;
 use App\Models\Autor;
 use App\Models\Livro;
 use App\Repositories\AutorRepository;
+use App\Repositories\LivroRepository;
 
 class AutorService{
     private AutorRepository $autorRepository;
-    public function __construct(AutorRepository $autorRepository){
+    private LivroRepository $livroRepository;
+    public function __construct(AutorRepository $autorRepository, LivroRepository $livroRepository){
         $this->autorRepository=$autorRepository;
+        $this->livroRepository = $livroRepository;
     }
 
     public function get(){
@@ -28,10 +31,10 @@ class AutorService{
     }
 
     public function delete(int $id){
-        $autor = $this->details($id);
-        $livros = $autor->livro;
+        $autor = $this->details($id); // Busca o autor
+        $livros = $autor->livro; // Busca os livros do autor
         foreach($livros as $livro){
-            $this->livroService->delete($livro->id); 
+            $this->livroRepository->delete($livro->id);  //Para cada livro fazemos a deleção
         }
         return $this->autorRepository->delete($id);
     }

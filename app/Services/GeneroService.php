@@ -34,8 +34,8 @@ class GeneroService {
     }
 
     public function delete(int $id){
-        $usuario = $this->generoRepository->detailsWithBooks($id);
-        $livros = $usuario->livro;
+        $genero = $this->generoRepository->detailsWithBooks($id);
+        $livros = $genero->livro;
 
         foreach($livros as $livro){
             $this->livroRepository->desvincular($livro->id);

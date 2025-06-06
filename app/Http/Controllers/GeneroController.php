@@ -53,7 +53,7 @@ class GeneroController extends Controller
     public function delete(int $id)
     {
         try {
-            $genero = $this->generoService->delete($id);
+            $genero = $this->generoService->delete($id); 
         } catch (ModelNotFoundException $e) {
             return response()->json(['error' => 'Gênero não encontrado'], 404);
         }

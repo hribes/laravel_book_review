@@ -4,7 +4,7 @@ namespace App\Services;
 use App\Models\Usuario;
 use App\Models\Review;
 use App\Repositories\UsuarioRepository;
-use App\Services\ReviewRepository;
+use App\Repositories\ReviewRepository;
 
 class UsuarioService{
     private UsuarioRepository $usuarioRepository;

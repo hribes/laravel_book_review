@@ -19,7 +19,7 @@ return new class extends Migration
             $table->text('texto')->nullable();
             $table->timestamps();
 
-            $table->foreign('livro_id')->references('id')->on('livros')->onDelete('cascade');
+            $table->foreign('livro_id')->references('id')->on('livros')->onDelete('cascade'); // cascade . Caso deletado irá apagar as reviews
             $table->foreign('usuario_id')->references('id')->on('usuarios')->onDelete('cascade');
         });
     }
